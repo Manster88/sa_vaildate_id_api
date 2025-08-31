@@ -1,0 +1,54 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "SA Validate ID API",
+    "description": "verify_id, validate ID number and give feedback for SA Status, Date of Birth, Gender.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Manster Developer",
+      "email": "mansterdevelopers@gmail.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://example.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/mask": {
+      "get": {
+        "summary": "verify_id, validate ID number and give feedback for SA Status, Date of Birth, Gender in single payload.",
+        "operationId": "verify_id",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {"$ref": "#/components/schemas/MaskRequest"},
+              "example": {
+                "data": {
+                  "id_number": "8001015009087"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Validate ID Information",
+            "content": {
+              "application/json": {
+                "example": {
+                    "id_number": "8001015009087",
+                    "date_of_birth": "1980-01-01",
+                    "age": "45",
+                    "gender": "Male"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
