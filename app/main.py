@@ -59,3 +59,10 @@ def verify_id(id_number: str):
         "gender": gender,
         "citizen": citizen
     }
+
+# -------------------------
+# Endpoint: Check API Health
+# -------------------------
+@app.get("/health")
+def health_check():
+    return {"status ok"}
